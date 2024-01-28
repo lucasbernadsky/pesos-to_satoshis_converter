@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de ARS a Satoshis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de ARS a Satoshis</h1>
+        
+        <div class="converter">
+            <label for="amount">Monto:</label>
+            <input type="number" id="amount" placeholder="Ingrese el monto" step="any">
+            
+            <label for="conversionType">Convertir:</label>
+            <select id="conversionType">
+                <option value="arsToSatoshis">De Pesos a Satoshis</option>
+                <option value="satoshisToARS">De Satoshis a Pesos</option>
+            </select>
+            
+            <button onclick="convertir()">Convertir</button>
+        </div>
+
+        <p id="result">Resultado: </p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
