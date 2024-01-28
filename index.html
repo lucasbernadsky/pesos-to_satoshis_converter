@@ -12,7 +12,7 @@
         
         <div class="converter">
             <label for="amount">Monto:</label>
-            <input type="number" id="amount" placeholder="Ingrese el monto" step="any">
+            <input type="text" id="amount" placeholder="Ingrese el monto" pattern="[0-9]+(\.[0-9]+)?" title="Ingrese un número válido y no negativo" required>
             
             <label for="conversionType">Convertir:</label>
             <select id="conversionType">
