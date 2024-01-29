@@ -4,6 +4,11 @@ async function convertir() {
     const cotizacionSatoshi = await obtenerCotizacionSatoshi()
     const cotizacionDolarBlue = await obtenerCotizacionDolarBlue()
 
+    if (!isNumeric(monto)) {
+        console.error('Dale, loko. ingresá números validos');
+        document.getElementById('result').innerText = 'Dale, loko. ingresá números validos';
+    }
+
     if (conversionType === 'arsToSatoshis') {
         convertirPesosASatoshis(monto, cotizacionSatoshi, cotizacionDolarBlue);
     } else if (conversionType === 'satoshisToARS') {
@@ -15,12 +20,12 @@ async function convertir() {
 
 function convertirPesosASatoshis(montoARS, cotizacionSatoshi, cotizacionDolarBlue) {
     const satoshis = (montoARS / cotizacionDolarBlue) / cotizacionSatoshi;
-    document.getElementById('result').innerText = `${Math.round(montoARS)} ars = ${Math.round(satoshis)} satoshis`;
+    document.getElementById('result').innerText = `${formatearNumero(montoARS)} ars = ${formatearNumero(satoshis)} satoshis`;
 }
 
 function convertirSatoshisAPesos(montoSatoshis, cotizacionSatoshi, cotizacionDolarBlue) {
     const montoARS = montoSatoshis * cotizacionDolarBlue * cotizacionSatoshi;
-    document.getElementById('result').innerText = `${Math.round(montoSatoshis)} satoshis = ${Math.round(montoARS)} ars`;
+    document.getElementById('result').innerText = `${formatearNumero(montoSatoshis)} satoshis = ${formatearNumero(montoARS)} ARS, no pasa nada loko, todo bien`;
 }
 
 async function obtenerCotizacionSatoshi() {
@@ -55,4 +60,13 @@ function cambiarTitulo() {
     } else {
         console.error('Tipo de conversión no válido');
     }
+}
+
+function formatearNumero(numero) {
+    // Utiliza el método toLocaleString para formatear el número con comas y puntos
+    return numero.toLocaleString('es-AR');
+}
+
+function isNumeric(value) {
+    return !isNaN(parseFloat(value)) && isFinite(value);
 }

@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CConversor ARS a Satoshis</title>
+    <title>Conversor ARS a Satoshis</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 id="title">Conversor de ARS a Satoshis</h1>
+        <h1 id="title">Conversor de ARS (Falsificados) a Satoshis</h1>
+        <h5 id="desc">¿Cansado de tener que hacer regla de 3 para calcular tus satoshis, loko?</h5>
         
         <div class="converter">
             <label for="amount">Monto:</label>
-            <input type="text" id="amount" placeholder="Ingrese el monto" pattern="[0-9]+(\.[0-9]+)?" title="Ingrese un número válido y no negativo" required>
+            <input type="text" id="amount" placeholder="Ingrese el monto" pattern="[0-9]+" title="Ingrese un número válido y no negativo" required>
             
             <label for="conversionType">Convertir:</label>
             <select id="conversionType" onchange="cambiarTitulo()">
