@@ -15,12 +15,12 @@ async function convertir() {
 
 function convertirPesosASatoshis(montoARS, cotizacionSatoshi, cotizacionDolarBlue) {
     const satoshis = (montoARS / cotizacionDolarBlue) / cotizacionSatoshi;
-    document.getElementById('result').innerText = `Resultado: ${satoshis} Satoshis`;
+    document.getElementById('result').innerText = `${Math.round(montoARS)} ars = ${Math.round(satoshis)} satoshis`;
 }
 
 function convertirSatoshisAPesos(montoSatoshis, cotizacionSatoshi, cotizacionDolarBlue) {
     const montoARS = montoSatoshis * cotizacionDolarBlue * cotizacionSatoshi;
-    document.getElementById('result').innerText = `Resultado: ${montoARS} Pesos`;
+    document.getElementById('result').innerText = `${Math.round(montoSatoshis)} satoshis = ${Math.round(montoARS)} ars`;
 }
 
 async function obtenerCotizacionSatoshi() {
@@ -42,4 +42,17 @@ async function obtenerCotizacionDolarBlue() {
             return data.blue.value_sell
         })
         .catch(error => console.error('Error al obtener cotización USD', error));
+}
+
+function cambiarTitulo() {
+    const conversionType = document.getElementById('conversionType').value;
+    document.getElementById('result').innerText = `...`;
+
+    if (conversionType === 'arsToSatoshis') {
+        document.getElementById('title').innerText = `Conversor de ARS a Satoshis`;
+    } else if (conversionType === 'satoshisToARS') {
+        document.getElementById('title').innerText = `Conversor de Satoshis a ARS`;
+    } else {
+        console.error('Tipo de conversión no válido');
+    }
 }
